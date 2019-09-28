@@ -19,6 +19,7 @@
 
 const version = "0.6.18";
 const cacheName = `miapp-${version}`;
+console.log('Start!!!')
 self.addEventListener('install', e => {
   console.log('sw install')
   e.waitUntil(
