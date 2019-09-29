@@ -1,7 +1,6 @@
 {
-  "name": "mi awp app",
-  "short_name": "awpapp",
-  "description": "The world's best airhorner, and it's free",
+  "name": "Hola AWP!",
+  "short_name": "AWP hola",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",
@@ -44,16 +43,9 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/?homescreen=1",
-  "scope": "/",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#2196F3",
   "theme_color": "#2196F3",
-  "prefer_related_applications": true,
-  "related_applications": [
-    {
-      "platform": "play",
-      "id": "com.google.samples.apps.iosched"
-    }
-  ]
+  "description": "Test AWP"
 }
