@@ -5,3 +5,15 @@ main {
 .mdl-button {
     margin-left: 30px;
 }
+
+.boton-borrar {
+    font-size: 0.7em;
+    padding: 0;
+    text-align: center;
+}
+
+.mdl-textfield__input, .mdl-textfield__label {
+    margin-left: 30px;
+    margin-right: 30px;
+    width: 80%;
+}

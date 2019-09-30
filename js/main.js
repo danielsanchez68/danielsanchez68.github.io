@@ -26,7 +26,7 @@ function renderLista() {
                             </div>
                             
                             <!-- Boton borrar -->
-                            <button onclick="borrar(${index})" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                            <button onclick="borrar(${index})" class="boton-borrar mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
                                 Borrar
                             </button>
                         </li>
@@ -66,7 +66,6 @@ document.getElementById('agregar-producto').addEventListener('click', () => {
     }
     renderLista()
 })
-
 
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js').then(function(reg) {

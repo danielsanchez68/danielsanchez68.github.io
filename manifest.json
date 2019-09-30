@@ -1,6 +1,10 @@
 {
-  "name": "Hola AWP",
-  "short_name": "AWP hola",
+  "name": "Super Lista de Compras",
+  "short_name": "Lista Super",
+  "theme_color": "#2196f3",
+  "background_color": "#2196f3",
+  "display": "standalone",
+  "start_url": "/index.html",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",
@@ -42,10 +46,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "start_url": "/index.html",
-  "display": "standalone",
-  "background_color": "#2196F3",
-  "theme_color": "#2196F3",
-  "description": "Test AWP"
+  ]
 }
