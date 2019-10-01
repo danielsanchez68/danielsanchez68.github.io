@@ -1,5 +1,15 @@
 console.log('Super: Lista de compras')
 
+if('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js')
+    .then( function(reg) {
+        console.log('Service Worker registrado Exitósamente', reg);
+    })
+    .catch(function(err) {
+        console.log('Error registrando el Service Worker', err);
+    });
+}
+
 
 let listaDecompras = [
     { nombre: 'Fideos', precio: 1 },
@@ -66,9 +76,5 @@ document.getElementById('agregar-producto').addEventListener('click', () => {
     }
     renderLista()
 })
-
-
-
-
 
 renderLista()
