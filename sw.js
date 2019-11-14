@@ -16,8 +16,8 @@
  *  limitations under the License
  *
  */
-
-const version = "0.6.18";
+ 
+const version = "0.6.20";
 const cacheName = `miapp-${version}`;
 self.addEventListener('install', e => {
   console.log('sw install');
@@ -28,7 +28,7 @@ self.addEventListener('install', e => {
         `/index.html`,
         `/js/main.js`,
       ])
-      .then(() => self.skipWaiting());
+      //.then(() => self.skipWaiting());
     })
   );
 });

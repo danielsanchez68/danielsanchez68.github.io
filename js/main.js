@@ -1,4 +1,4 @@
-console.log('Lista de Supermercado en AWP')
+console.log('Lista de Supermercado en AWP v0.0.3')
 
 let productos = [/* 
     { nombre: 'Carne', cantidad: 1, precioUnitario: 45 },
