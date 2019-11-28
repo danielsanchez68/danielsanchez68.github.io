@@ -1,0 +1,29 @@
+<ul id="contenedor-lista" class="demo-list-item mdl-list">
+
+    {{#productos}}
+    <li class="mdl-list__item">
+
+        <span class="w-25 mdl-list__item-primary-content">
+            {{nombre}}
+        </span>
+
+        <div class="w-25 ml-items mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text" id="cantidad{{@index}}"
+                onchange="actualizarCantidad({{id}},this)">
+            <label class="mdl-textfield__label" for="cantidad{{@index}}">{{cantidad}}</label>
+        </div>
+
+        <div class="w-25 ml-items mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text" id="precio{{@index}}"
+                onchange="actualizarPrecio({{id}},this)">
+            <label class="mdl-textfield__label" for="precio{{@index}}">{{precioUnitario}}</label>
+        </div>
+
+        <button
+            class="w-25 ml-items mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+            onclick="borrar({{id}})">
+            <i class="material-icons">clear</i>
+        </button>
+    </li>
+    {{/productos}}
+</ul>

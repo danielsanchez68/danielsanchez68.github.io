@@ -1,50 +1,80 @@
-/*
- *
- *  Air Horner
- *  Copyright 2015 Google Inc. All rights reserved.
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *      https://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License
- *
- */
- 
-const version = "0.6.20";
-const cacheName = `miapp-${version}`;
+const CACHE_STATIC_NAME = 'static-v7'
+const CACHE_DYNAMIC_NAME = 'dynamic-v7'
+const CACHE_INMUTABLE_NAME = 'inmutable-v7'
+
 self.addEventListener('install', e => {
-  console.log('sw install');
+  //App SHELL : todos los recursos necesarios para que la WEBAPP funcione
+  const cacheProm = caches.open(CACHE_STATIC_NAME).then(cache => {
+    return cache.addAll([
+      '/index.html',
+      '/js/main.js',
+      '/css/estilos.css'
+    ])
+  })
+
+  const cacheInmutable = caches.open(CACHE_INMUTABLE_NAME).then(cache => {
+    return cache.addAll([
+      '/js/handlebars.min-v4.5.3.js',
+      'https://code.jquery.com/jquery-3.4.1.min.js',
+      'https://code.getmdl.io/1.3.0/material.min.js'
+    ])
+  })
+
+  e.waitUntil(Promise.all([cacheProm, cacheInmutable]))
+
+  console.log('sw install!!!!');
+});
+
+self.addEventListener('activate', e => {
+
+  const cacheWhiteList = [
+    CACHE_STATIC_NAME,
+    CACHE_DYNAMIC_NAME,
+    CACHE_INMUTABLE_NAME
+  ]
+
   e.waitUntil(
-    caches.open(cacheName).then(cache => {
-      return cache.addAll([
-        `/`,
-        `/index.html`,
-        `/js/main.js`,
-      ])
-      //.then(() => self.skipWaiting());
+    caches.keys().then(keys => {
+      return Promise.all(
+        keys.map(cache => {
+          if (cacheWhiteList.indexOf(cache) === -1) {
+            return caches.delete(cache)
+          }
+        })
+      )
     })
-  );
-});
+  )
 
-self.addEventListener('activate', event => {
   console.log('sw activate');
-  event.waitUntil(self.clients.claim());
 });
 
-self.addEventListener('fetch', event => {
-  console.log('sw fetch');
-  event.respondWith(
-    caches.open(cacheName)
-      .then(cache => cache.match(event.request, {ignoreSearch: true}))
-      .then(response => {
-      return response || fetch(event.request);
+self.addEventListener('fetch', e => {
+  //console.log('sw fetch');
+  //console.log(e.request)
+
+  if (!e.request.url.includes('mockapi.io')) {
+
+    const respuesta = caches.match(e.request).then(res => {
+      if (res) {
+        console.log('CACHE', e.request.url)
+        return res
+      }
+      console.log('NO EXISTE', e.request.url)
+
+      return fetch(e.request).then(newResp => {
+        caches.open(CACHE_DYNAMIC_NAME).then(cache => {
+          cache.put(e.request, newResp)
+        })
+        return newResp.clone()
+      })
     })
-  );
+
+    e.respondWith(respuesta)
+
+
+  }
+  else {
+    console.log('PUENTEADA', e.request.url)
+  }
+
 });
