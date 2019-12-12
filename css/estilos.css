@@ -52,5 +52,6 @@ body {
     color: #777;
 }
 
-.mdl-button {
+.miboton {
+    width: 10px !important;
 }

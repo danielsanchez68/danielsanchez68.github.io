@@ -78,7 +78,7 @@ function renderLista() {
                             <span class="mdl-list__item-primary-content w-30 ml-item">
                                 ${prod.nombre}
                             </span>
-                            <span class="mdl-list__item-primary-content w-15 ml-item">
+                            <span class="mdl-list__item-primary-content w-20 ml-item">
  
                                 <div class="mdl-textfield mdl-js-textfield">
                                     <input class="mdl-textfield__input" type="text" id="sample-cant-${index}" onchange="cambiarCantidad(${index}, this)">
@@ -97,7 +97,7 @@ function renderLista() {
                             <span class="mdl-list__item-primary-content w-20 ml-item">
                                 <!-- Colored FAB button with ripple -->
                                 <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" onclick="borrarProd(${index})">
-                                    <i class="material-icons">remove_shopping_cart</i>
+                                    <i class="miboton material-icons">remove_shopping_cart</i>
                                 </button>
                             </span>
 
