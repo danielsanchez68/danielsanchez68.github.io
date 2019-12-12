@@ -78,7 +78,7 @@ function renderLista() {
                             <span class="mdl-list__item-primary-content w-30 ml-item">
                                 ${prod.nombre}
                             </span>
-                            <span class="mdl-list__item-primary-content w-15 ml-item"">
+                            <span class="mdl-list__item-primary-content w-15 ml-item">
  
                                 <div class="mdl-textfield mdl-js-textfield">
                                     <input class="mdl-textfield__input" type="text" id="sample-cant-${index}" onchange="cambiarCantidad(${index}, this)">
