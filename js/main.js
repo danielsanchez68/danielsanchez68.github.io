@@ -116,6 +116,17 @@ function renderLista() {
 function start() {
     configurarListeners()
     renderLista()
+
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('./sw.js').then(function(reg) {
+                console.log('Successfully registered service worker', reg);
+            }).catch(function(err) {
+                console.warn('Error whilst registering service worker', err);
+            });
+        })
+    }
+    
 }
 
 // ----------------------------------------------------
@@ -124,3 +135,5 @@ function start() {
 //start()
 //window.onload = start
 document.addEventListener('DOMContentLoaded', start)
+
+
