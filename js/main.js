@@ -117,6 +117,7 @@ function start() {
     configurarListeners()
     renderLista()
 
+/*
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
             navigator.serviceWorker.register('./sw.js').then(function(reg) {
@@ -126,7 +127,7 @@ function start() {
             });
         })
     }
-    
+*/    
 }
 
 // ----------------------------------------------------
