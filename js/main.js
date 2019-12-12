@@ -34,7 +34,7 @@ function configurarListeners() {
             })
             renderLista()
 
-            input.placeholder = 'Ingrese un producto...'
+            input.placeholder = 'Ingrese producto...'
             input.value = ''
         }
     })
@@ -97,7 +97,7 @@ function renderLista() {
                             <span class="mdl-list__item-primary-content w-20 ml-item">
                                 <!-- Colored FAB button with ripple -->
                                 <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" onclick="borrarProd(${index})">
-                                    <i class="miboton material-icons">remove_shopping_cart</i>
+                                    <i class="material-icons">remove_shopping_cart</i>
                                 </button>
                             </span>
 
