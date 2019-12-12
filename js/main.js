@@ -72,7 +72,7 @@ function renderLista() {
     ul.innerHTML = ''
     listaProductos.forEach((prod, index) => {
         ul.innerHTML += `<li class="mdl-list__item">
-                            <span class="mdl-list__item-primary-content w-5">
+                            <span class="mdl-list__item-primary-content w-10">
                                 <i class="material-icons">shopping_cart</i>
                             </span>
                             <span class="mdl-list__item-primary-content w-30 ml-item">
