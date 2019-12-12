@@ -34,7 +34,6 @@ function configurarListeners() {
             })
             renderLista()
 
-            input.placeholder = 'Ingrese producto...'
             input.value = ''
         }
     })
@@ -75,11 +74,11 @@ function renderLista() {
                             <span class="mdl-list__item-primary-content w-10">
                                 <i class="material-icons">shopping_cart</i>
                             </span>
-                            <span class="mdl-list__item-primary-content w-30 ml-item">
+                            <span class="mdl-list__item-primary-content w-30">
                                 ${prod.nombre}
                             </span>
-                            <span class="mdl-list__item-primary-content w-20 ml-item">
- 
+                            <span class="mdl-list__item-primary-content w-20">
+
                                 <div class="mdl-textfield mdl-js-textfield">
                                     <input class="mdl-textfield__input" type="text" id="sample-cant-${index}" onchange="cambiarCantidad(${index}, this)">
                                     <label class="mdl-textfield__label" for="sample-cant-${index}">${prod.cantidad}</label>
@@ -113,21 +112,22 @@ function renderLista() {
     else iniRenderLista = false
 }
 
+function configurarSW() {
+    if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js')
+        .then( reg => {
+            console.log('service worker registrado exitosamente', reg)
+        })
+        .catch( err => {
+            console.log('ERROR! registro service worker', err)
+        })
+    }
+}
+
 function start() {
     configurarListeners()
     renderLista()
-
-/*
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-            navigator.serviceWorker.register('./sw.js').then(function(reg) {
-                console.log('Successfully registered service worker', reg);
-            }).catch(function(err) {
-                console.warn('Error whilst registering service worker', err);
-            });
-        })
-    }
-*/    
+    configurarSW()
 }
 
 // ----------------------------------------------------
@@ -136,5 +136,3 @@ function start() {
 //start()
 //window.onload = start
 document.addEventListener('DOMContentLoaded', start)
-
-

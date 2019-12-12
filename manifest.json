@@ -1,10 +1,9 @@
 {
   "name": "Super Lista Productos",
-  "short_name": "SuperLista",
-  "theme_color": "#3F51B5",
-  "background_color": "#3F51B5",
-  "color": "#FF0000",
-  "display": "browser",
+  "short_name": "Super Lista",
+  "theme_color": "#2196f3",
+  "background_color": "#2196f3",
+  "display": "standalone",
   "Scope": "/",
   "start_url": "/",
   "icons": [

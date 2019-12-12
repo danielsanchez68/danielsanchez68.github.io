@@ -1,25 +1,9 @@
-* {
-    box-sizing: border-box;
-}
-
-body {
-    background-color: #ddd;
-}
-
 .demo-list-item {
     width: 100%;
 }
 
-.w-5 {
-    width: 5%;
-}
-
 .w-10 {
     width: 10%;
-}
-
-.w-15 {
-    width: 15%;
 }
 
 .w-20 {
@@ -35,11 +19,11 @@ body {
 }
 
 .ml-item {
-    margin-left : 5px;
+    margin-left : 20px;
 }
 
 .page-content {
-    padding: 5px;
+    padding: 10px;
 }
 
 .contenedor {
@@ -47,8 +31,3 @@ body {
     justify-content: space-around;
     align-items: center;
 }
-
-.mdl-textfield__label {
-    color: #777;
-}
-
