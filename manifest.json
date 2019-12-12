@@ -3,7 +3,7 @@
   "short_name": "SuperLista",
   "theme_color": "#3F51B5",
   "background_color": "#3F51B5",
-  "color": "#FFFFFF",
+  "color": "#FF0000",
   "display": "standalone",
   "Scope": "/",
   "start_url": "/",
