@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo Material Design</title>
+    <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+</head>
+
+<body>
+
+    <!-- Render textfield component -->
+    <label class="mdc-text-field">
+        <input type="text" class="mdc-text-field__input" aria-labelledby="my-label">
+        <span class="mdc-floating-label" id="my-label">Label</span>
+        <div class="mdc-line-ripple"></div>
+    </label>
+
+    <!-- Required MDC Web JavaScript library -->
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    
+    <!-- Instantiate single textfield component rendered in the document -->
+    <script>
+        mdc.textField.MDCTextField.attachTo(document.querySelector('.mdc-text-field'));
+    </script>
+
+</body>
+
+</html>
