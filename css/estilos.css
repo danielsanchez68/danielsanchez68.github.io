@@ -1,0 +1,33 @@
+.w-100 {
+    width: 100%;
+}
+
+.w-10 {
+    width: 10%;
+}
+
+.w-20 {
+    width: 20%;
+}
+
+.w-30 {
+    width: 30%;
+}
+
+.w-40 {
+    width: 40%;
+}
+
+.ml-item {
+    margin-left : 20px;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.page-content {
+    padding: 10px;
+}
