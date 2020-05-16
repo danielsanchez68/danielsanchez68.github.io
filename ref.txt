@@ -1,0 +1,8 @@
+https://airhorner.com/
+
+https://www.apkonline.net/
+
+https://developer.mozilla.org/es/docs/Web/Manifest
+https://developers.google.com/web/fundamentals/web-app-manifest/?hl=es
+
+https://app-manifest.firebaseapp.com/

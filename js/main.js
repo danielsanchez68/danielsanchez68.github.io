@@ -123,7 +123,21 @@ function renderLista() {
     crearLista = false;
 }
 
+function registrarServiceWorker() {
+    if('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            this.navigator.serviceWorker.register('./sw.js').then(function(reg) {
+                console.log('El service worker se registró correctamente', reg)
+            })
+            .catch(function(err) {
+                console.warn('Error al registrar el service worker', err)
+            })
+        })
+    }
+}
+
 function start() {
+    registrarServiceWorker()
     configurarListeners()
     renderLista()
 }
