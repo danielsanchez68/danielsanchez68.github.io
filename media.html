@@ -43,6 +43,7 @@
             height: 60vh;
             float: left;
             padding: 10px;
+            overflow: hidden;
         }
 
         footer {
@@ -51,6 +52,32 @@
             width: 100%;
             height: 10vh;
             float: left;
+        }
+
+
+
+        @media screen and (max-width: 768px) {
+            main {
+                background-color: limegreen;
+            }
+        }
+
+        @media screen and (max-width: 595px) {
+            main {
+                background-color: crimson;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            main {
+                background-color: purple;
+            }
+        }
+
+        img {
+            width: 30%;
+            min-width: 150px;
+            max-width: 200px;
         }
 
     </style>
@@ -73,8 +100,13 @@
     </aside>
 
     <main>
-        Main <br>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, labore voluptas. Impedit omnis vel fugit fuga facere, enim error itaque sint porro, officia perspiciatis quos totam corporis, ex eaque quo.
+        Main
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, labore voluptas. Impedit omnis vel fugit fuga facere, enim error itaque sint porro, officia perspiciatis quos totam corporis, ex eaque quo.
+        </p>
+
+        <img src="https://cdn3.iconfinder.com/data/icons/logos-brands-3/24/logo_brand_brands_logos_linux-256.png" alt="">        
+
     </main>
 
     <footer>
