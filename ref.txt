@@ -1,0 +1,8 @@
+- PWA de prueba:  https://airhorner.com/
+- Simulador Andriod Online. https://www.apkonline.net/
+
+- Documentación Manifiest (MDN y Google)
+https://developer.mozilla.org/es/docs/Web/Manifest
+https://developers.google.com/web/fundamentals/web-app-manifest/?hl=es
+
+- Generador Online de archivo manifiesto (manifest.json): https://manifest-gen.netlify.app/
