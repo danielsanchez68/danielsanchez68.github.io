@@ -1,0 +1,10 @@
+- PWA de prueba: https://airhorner.com
+- Simulador Android Online: https://www.apkonline.net/
+
+- Documentación Manifest.json (MDN y Google)
+https://developer.mozilla.org/es/docs/Web/Manifest
+https://developers.google.com/web/fundamentals/web-app-manifest/?hl=es
+https://web.dev/add-manifest/
+
+- Generardor Online de archivo manifest (Manifiesto)
+https://manifest-gen.netlify.app/
