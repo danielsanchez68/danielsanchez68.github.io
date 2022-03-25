@@ -137,9 +137,26 @@ function renderLista() {
     crearLista = false
 }
 
+function registrarServiceWorker() {
+    if('serviceWorker' in navigator) {
+        //estó de debe ejecutar cunado toda el documento web esté cargado
+        this.navigator.serviceWorker.register('/sw.js')
+        .then( reg => {
+            console.log('El service worker se registró correctamente',reg)
+        })
+        .catch(err => {
+            console.error('Error al registrar el service worker',err)
+        }) 
+    }
+    else {
+        console.error('serviceWorker no está disponible en navigator')
+    }
+}
+
 function start() {
     console.warn('Super Lista')
 
+    registrarServiceWorker()
     renderLista()
     configurarListeners()
 }

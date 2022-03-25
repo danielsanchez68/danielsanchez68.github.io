@@ -14,7 +14,8 @@
 }
 
 .mdl-layout {
-    min-width: 400px;
+    /* min-width: 400px; */
+    min-width: 360px;   /* para cumplir con requerimiento PWA */
 }
 
 .contenedor {
