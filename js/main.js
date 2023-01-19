@@ -1,154 +1,134 @@
 /* ----------------------------------- */
 /*         VARIABLES GLOBALES          */
 /* ----------------------------------- */
-let listaProductos = [
-    { nombre: 'Carne',  cantidad: 2,  precio: 12.34 },
-    { nombre: 'Pan',    cantidad: 3,  precio: 34.56 },
-    { nombre: 'Fideos', cantidad: 4,  precio: 56.78 },
-    { nombre: 'Leche',  cantidad: 5,  precio: 78.90 },
-    { nombre: 'Crema',  cantidad: 6,  precio: 90.12 },
-]
-
-let crearLista = true
-let ul
+let listaProductos = []
 
 /* ----------------------------------- */
 /*         FUNCIONES GLOBALES          */
 /* ----------------------------------- */
-function borrarProd(index) {
-    console.log('borrarProd', index)
+function guardarListaProductos(lista) {
+    //console.log(lista)
+    localStorage.setItem('lista', JSON.stringify(lista))
+}
 
-    listaProductos.splice(index, 1)
+function leerListaProductos() {
+    let lista = []
 
+    let prods = localStorage.getItem('lista')
+    if(prods) {
+        try {
+            lista = JSON.parse(prods)
+        }
+        catch {
+            guardarListaProductos(lista)
+        }
+    }
+    return lista
+}
+
+
+async function borrarProd(id) {
+    //console.log('borrarProd', id)
+    await apiLista.delete(id)
     renderLista()
 }
 
-function cambiarValorProd(index, cual, el) {
-    //console.log(index, cual, el)
-    //console.log(index, cual, el.value)
+async function cambiarValorProd(id, cual, el) {
+    let index = listaProductos.findIndex(prod => prod.id == id)
+    //console.log(id, index, cual, el)
+    //console.log(id, index, cual, el.value)
+
     let valor = cual == 'precio'? parseFloat(el.value) : parseInt(el.value)
     console.log(index, cual, valor)
 
     listaProductos[index][cual] = valor
+
+    guardarListaProductos(listaProductos)
+
+    let prod = listaProductos[index]
+    await apiLista.put(id,prod)
 }
 
 
 function configurarListeners(){
-    document.getElementById('btn-entrada-producto').addEventListener('click', () => {
+    $('#btn-entrada-producto').click( async () => {
         console.log('btn-entrada-producto')
 
-        const input = document.getElementById('ingreso-producto')
-        let producto = input.value
+        const input = $('#ingreso-producto')
+        let nombre = input.val()
 
-        if(producto) {
-            listaProductos.push( {nombre: producto, cantidad: 1, precio: 0} )
+        if(nombre) {
+            let producto = {nombre, cantidad: 1, precio: 0}
+            await apiLista.post(producto)
             renderLista()
-            input.value = ''
+            input.val('')
         }
     })
 
-    document.getElementById('btn-borrar-productos').addEventListener('click', () => {
+    $('#btn-borrar-productos').click( () => {
         console.log('btn-borrar-productos')
 
-        /* if( confirm('¿Desea borrar todos los productos?') ) {
-            listaProductos = []
-            renderLista()
-        } */
-
         if(listaProductos.length) {
-            var dialog = document.querySelector('dialog');
+            var dialog = $('dialog')[0];
             dialog.showModal()
         }
     })
 }
 
 function iniDialog() {
-    var dialog = document.querySelector('dialog');
-    //var showDialogButton = document.querySelector('#show-dialog');
+    var dialog = $('dialog')[0];
     if (!dialog.showModal) {
         dialogPolyfill.registerDialog(dialog);
     }
-    /* showDialogButton.addEventListener('click', function () {
-        dialog.showModal();
-    }); */
-    dialog.querySelector('.cancelar').addEventListener('click', function () {
+
+    $('dialog .cancelar').click(function () {
         dialog.close();
     });
 
-    dialog.querySelector('.aceptar').addEventListener('click', function () {
+    $('dialog .aceptar').click( async function () {
         dialog.close();
         
-        listaProductos = []
+        //listaProductos = []
+        await apiLista.deleteAll()
         renderLista()
     });
 }
 
-function renderLista() {
+async function renderLista() {
 
-    if(crearLista) {
-        ul = document.createElement('ul')
-        ul.classList.add('demo-list-icon', 'mdl-list', 'w-100')
-    }
+    let plantilla = await $.ajax({url: 'plantillas/plantilla-lista.hbs'})
+    let template = Handlebars.compile(plantilla)
+    
+    listaProductos = await apiLista.get()
 
-    ul.innerHTML = ''
-    listaProductos.forEach( (prod, index) => {
-        ul.innerHTML += `
-            <!-- Producto -->
-            <li class="mdl-list__item">
-                <!-- ícono del producto -->
-                <span class="mdl-list__item-primary-content w-10">
-                    <i class="material-icons mdl-list__item-icon">shopping_cart</i>
-                </span>
+    guardarListaProductos(listaProductos)
 
-                <!-- nombre del producto -->
-                <span class="mdl-list__item-primary-content w-30">
-                    ${prod.nombre}
-                </span>
+    let html = template({ listaProductos })
+    $('#lista').html(html)
 
-                <!-- cantidad de producto -->
-                <span class="mdl-list__item-primary-content w-20">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input onchange="cambiarValorProd(${index},'cantidad',this)" value=${prod.cantidad} class="mdl-textfield__input" type="text" id="cantidad-${index}">
-                        <label class="mdl-textfield__label" for="cantidad-${index}">Cantidad</label>
-                    </div>
-                </span>
-
-                <!-- precio del producto -->
-                <span class="mdl-list__item-primary-content w-20 ml-item">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input onchange="cambiarValorProd(${index},'precio',this)" value=${prod.precio} class="mdl-textfield__input" type="text" id="precio-${index}">
-                        <label class="mdl-textfield__label" for="precio-${index}">Precio</label>
-                    </div>
-                </span>
-
-                <!-- botón de borrado individual del producto -->
-                <span class="mdl-list__item-primary-content w-20 ml-item">
-                    <!-- Colored FAB button with ripple -->
-                    <button onclick="borrarProd(${index})"
-                        class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-                        <i class="material-icons">remove_shopping_cart</i>
-                    </button>
-                </span>
-
-            </li>
-        `
-    })
-
-    if(crearLista) {
-        document.getElementById('lista').appendChild(ul)
-    }
-    else {
-        componentHandler.upgradeElements(ul)
-    }
-
-    crearLista = false
+    let ul = $('ul')
+    componentHandler.upgradeElements(ul)
 }
+
 
 function registrarServiceWorker() {
     if('serviceWorker' in navigator) {
         this.navigator.serviceWorker.register('/sw.js')
             .then( reg => {
-                console.log('El service worker se registró correctamente', reg)
+                //console.log('El service worker se registró correctamente', reg)
+
+                reg.onupdatefound = () => {
+                    const installWorker = reg.installing
+                    installWorker.onstatechange = () => {
+                        console.warn('SW --->', installWorker.state)
+                        if(installWorker.state == 'activated') {
+                            console.error('Reiniciando en 2 segundos...')
+                            setTimeout(() => {
+                                location.reload()
+                            },2000)
+                        }
+                    }
+                }
             })
             .catch( err => {
                 console.error('Error el registrar el service worker', err)
@@ -159,8 +139,9 @@ function registrarServiceWorker() {
     }
 }
 
+
 function start() {
-    console.warn('SuperLista App')
+    //console.warn('////////////////// SuperLista App ////////////////////')
 
     registrarServiceWorker()
 
@@ -172,4 +153,4 @@ function start() {
 /* ----------------------------------- */
 /*              EJECUCIÓN              */
 /* ----------------------------------- */
-start()
+$(document).ready(start)       //window.onload amanece en null

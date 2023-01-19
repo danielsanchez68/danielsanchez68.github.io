@@ -21,10 +21,19 @@
 }
 
 .mdl-layout {
-    /* min-width: 400px; */
     min-width: 360px;       /* para cumplir con requerimientos PWA */
+    max-width: 800px;
 }
 
-.demo-list-icon {
-    /* width: 300px; */
+img {
+    width: 100%;
+    max-width: 800px;
+}
+
+progress {
+    width: 99%;
+    height: 20px;
+    display: none;
+
+    margin: 0 auto;
 }
