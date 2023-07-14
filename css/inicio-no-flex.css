@@ -1,0 +1,39 @@
+main {
+    height: auto;
+    text-align: center;
+    background-color: #689;
+    padding: 25px;
+}
+
+main .cards-container {
+    text-align: center;
+}
+
+section img {
+    width: 100px;
+    /* float: left; */
+    margin-bottom: 20px;
+}
+
+section {
+    display: inline-block;
+    border: 1px dashed yellow;
+    width: 350px;
+    padding: 15px;
+    background-color:#943;
+    color: white;
+    margin: 25px;
+    border-radius: 15px;
+}
+
+section h3 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    text-decoration: underline;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.section-cards-header h1 {
+    color: white;
+    margin-bottom: 40px;
+}

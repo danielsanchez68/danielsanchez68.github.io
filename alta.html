@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alta</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/alta.css">
+</head>
+<body>
+    
+    <header>
+        <nav>
+            <ul>
+                <li> <a href="./index.html">Inicio</a> </li>
+                <li> <a href="./alta.html">Alta</a> </li>
+                <li> <a href="./carrito.html">Carrito</a> </li>
+                <li> <a href="./contacto.html">Contacto</a> </li>
+                <li> <a href="./nosotros.html">Nosotros</a> </li>
+                <li> <a href="./otra.html">Otra</a> </li>
+            </ul>
+        </nav>
+        <div>
+            <div id="logo">Logo</div>
+            <div id="barra-busqueda">
+                <form action="#">
+                    <label>Buscar</label>
+                    <input type="text">
+                    <input type="submit" value="Buscar">
+                </form>
+            </div>
+            <div id="boton-carrito">C</div>
+        </div>
+    </header>
+
+    <main>
+        <h1>Alta de productos</h1>
+
+        <form action="#" class="alta-form">
+            <div class="input-group">
+                <label for="nombre">nombre</label>
+                <input type="text" name="nombre" id="nombre">
+                <div class="error-detail"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="precio">precio</label>
+                <input type="number" step="0.00" name="precio" id="precio">
+                <div class="error-detail"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="stock">stock</label>
+                <input type="number" name="stock" id="stock">
+                <div class="error-detail"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="marca">marca</label>
+                <input type="text" name="marca" id="marca">
+                <div class="error-detail"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="categoria">categoria</label>
+                <input type="text" name="categoria" id="categoria">
+                <div class="error-detail"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="detalles">detalles</label>
+                <input type="text" name="detalles" id="detalles">
+                <div class="error-detail"></div>
+            </div>
+
+            <div class="input-group">
+                <input type="checkbox" name="envio" id="envio">
+                <label for="envio">envio</label>
+                <div class="error-detail"></div>
+            </div>
+
+            <button>Agregar</button>
+
+        </form>
+
+
+        <hr>
+
+        <h2>Lista de productos disponibles</h2>
+
+        <table>
+            <!-- encabezado de la tabla -->
+            <tr>
+                <th>nombre</th>
+                <th>precio</th>
+                <th>stock</th>
+                <th>marca</th>
+                <th>categoría</th>
+                <th>detalles</th>
+                <th>envío</th>
+            </tr>
+            <!-- datos de la tabla -->
+            <tr>
+                <td>Caramelos</td>
+                <td>12.34</td>
+                <td>55</td>
+                <td>Billiken</td>
+                <td>Golosinas</td>
+                <td>Gusto menta</td>
+                <td>Si</td>
+            </tr>
+            <tr>
+                <td>Alfajor</td>
+                <td>34.67</td>
+                <td>68</td>
+                <td>Jorgito</td>
+                <td>Golosinas</td>
+                <td>Dulce de leche</td>
+                <td>No</td>
+            </tr>
+
+        </table>
+
+
+    </main>
+
+    <footer>
+        <h3>Copyright 2023</h3>
+    </footer>
+
+</body>
+</html>
