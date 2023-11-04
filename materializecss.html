@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo de framework CSS MaterializeCSS</title>
+
+    <!-- https://materializecss.com/ -->
+
+    <!-- iconos styles -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <style>
+        .container {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="sass.html"><i class="material-icons">search</i></a></li>
+                <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
+                <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
+                <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <a class="waves-effect waves-light btn">button</a>
+        <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>button</a>
+        <a class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>button</a>
+
+        <br>
+        <br>
+
+        <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+
+        <br>
+        <br>
+
+        <form action="#">
+            <p>
+                <label>
+                    <input type="checkbox" />
+                    <span>Red</span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input type="checkbox" checked="checked" />
+                    <span>Yellow</span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input type="checkbox" class="filled-in" checked="checked" />
+                    <span>Filled in</span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" />
+                    <span>Indeterminate Style</span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input type="checkbox" checked="checked" disabled="disabled" />
+                    <span>Green</span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input type="checkbox" disabled="disabled" />
+                    <span>Brown</span>
+                </label>
+            </p>
+        </form>
+    </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>
